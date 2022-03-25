@@ -75,10 +75,10 @@ def solveQueen(size):
         print()
         solutions += 1 
 
-      # if queens already placed in rows except last at best one position in last row 
-      # option to backtrack to reach second last row
-      board.removeCurrentRow()
-      row -= 1
+        # if queens already placed in rows except last at best one position in last row 
+        # option to backtrack to reach second last row
+        board.removeCurrentRow()
+        row -= 1
 
       # use backtracking method 
       try: 
@@ -89,6 +89,7 @@ def solveQueen(size):
       
       # check previous row 
       row -= 1
+      # check each column and increment column based on previous row
       col = 1 + prevCol
   
   # display total number of solutions 
