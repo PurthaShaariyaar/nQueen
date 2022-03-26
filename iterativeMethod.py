@@ -1,3 +1,4 @@
+AllSolved = []
 class QueenBoard: 
   # initialize board with dimensions size x size 
   def __init__(self, size):
@@ -40,10 +41,8 @@ class QueenBoard:
     for row in range(self.size): 
       for col in range(self.size): 
         if col == self.cols[row]: 
-          print('Q', end = ' ')
-        else: 
-          print('.', end = ' ')
-      print()
+            position = (row, col)
+            AllSolved.append(position)
 
 def solveQueen(size): 
   # display chess board for each safe queen position based on the dimensions of the board 
@@ -72,7 +71,6 @@ def solveQueen(size):
       # board full meaning a solution thus display solution increment solutions by 1 
       if row == size: 
         board.displayQueen()
-        print()
         solutions += 1 
 
         # if queens already placed in rows except last at best one position in last row 
@@ -93,7 +91,21 @@ def solveQueen(size):
       col = 1 + prevCol
   
   # display total number of solutions 
-  print('Number of solutions: ', solutions)
+  print('Total Number of Solutions: ', solutions)
 
+import time
 n = int(input('Enter the dimensions of the board: '))
 solveQueen(n)
+start_time = time.time()
+print("First Solution [Row, Column]: ")
+for solutions in range(n):
+    print(AllSolved[solutions], end = ' ')
+print()
+print("First solution finished %s ms " % ((time.time() * 1000) - (start_time * 1000)))
+print()
+
+print("All Solutions [Row, Column]: ")
+for solutions in AllSolved: 
+    print(solutions, end = ' ')
+print()
+print("All solution finished %s ms " % ((time.time() * 1000) - (start_time * 1000)))
